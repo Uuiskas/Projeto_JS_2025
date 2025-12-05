@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxo - Admin</title>
+    <link rel="shortcut icon" href="images/barco2.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/default.css" />
+    <style>
+    
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: var(--box);
+            color: white;
+            border-radius: 5px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--ocher);
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: none;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--lightblue);
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: white;
+            color: var(--darkblue);
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+    <header>
+      <div id="title">
+        <img src="images/barco1.png" alt="ícone de barco" />
+        <div class="headtitle">
+          <h1>Luxo</h1>
+          <h2>Aluguel de iates</h2>
+        </div>
+      </div>
+      <nav>
+        <ul class="navmenu">
+          <li><a href="index.html">Página inicial</a></li>
+          <li><a href="admin.html" class="accent">Área Administrativa</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="pagtitle">
+        <div class="bgtitle" style="padding-top: 200px;"></div> <h2>Login Administrativo</h2>
+      </div>
+
+      <section class="login-container">
+        <h2>Entrar</h2>
+        <form id="form-login">
+            <label for="admin-email">E-mail</label>
+            <input type="email" id="admin-email" placeholder="admin@admin.com" required />
+
+            <label for="admin-senha">Senha</label>
+            <input type="password" id="admin-senha" placeholder="1234" required />
+
+            <button type="submit" id="btn-login">ACESSAR</button>
+        </form>
+      </section>
+    </main>
+    </div>
+
+    <footer>
+      <p>© 2023 por Luxo aluguel de iates</p>
+    </footer>
+
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/api.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#btn-login').click(function(e) {
+                e.preventDefault();
+
+                var objLoginSenha = {
+                    email: $('#admin-email').val(),
+                    senha: $('#admin-senha').val()
+                };
+
+                var isValido = validarUsuario(objLoginSenha);
+
+                if(isValido) {
+                    window.location.href = "mensagens.html";
+                } else {
+                    alert("E-mail e Senha inválidos");
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
